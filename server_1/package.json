@@ -21,11 +21,14 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
+    "jsdoc": "^4.0.0",
     "jsonwebtoken": "^9.0.0",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.28.0",
+    "swagger": "^0.7.5",
+    "ui": "^0.2.4"
   },
   "devDependencies": {
     "cors": "^2.8.5",

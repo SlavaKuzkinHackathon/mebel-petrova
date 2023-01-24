@@ -1,0 +1,47 @@
+createuser postgres
+
+createdb mebel_petrova -O postgres
+
+psql -c "alter user postgres with password 'slava'"
+
+sudo su - postgres
+
+
+psql mebel_petrova
+
+\dt - таблицы в базе данных
+
+select * from product
+
+dropdb test_db
+
+
+
+
+
+.env
+
+PORT=5050
+
+DB=mebel_petrova
+DB_USER=postgres
+DB_PASSWORD=slava
+DB_HOST=localhost
+DB_PORT=5432
+SECRET_KEY=random_secret_key1998
+
+
+
+https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4
+
+
+https://wiki.astralinux.ru/pages/viewpage.action?pageId=147162402&ysclid=ld761tizrc212993960
+
+
+
+
+
+
+
+
+
