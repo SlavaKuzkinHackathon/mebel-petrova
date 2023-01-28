@@ -52,5 +52,5 @@ app.use((req, res) => {
 app.listen(port, async (req, res) => {
     console.log(`Server is running on ${port}`)
     await sequelize.authenticate()
-    console.log('Database connected!')
-})
+    console.log('Database connected!') 
+}) 
