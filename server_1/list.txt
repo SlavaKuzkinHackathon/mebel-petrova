@@ -11,12 +11,23 @@ psql mebel_petrova
 
 \dt - таблицы в базе данных
 
-select * from product
+select * from products;
 
 dropdb test_db
 
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 
+npx sequelize model:generate --name Task --attributes taskName:string
+
+npx sequelize model:generate --name User --attributes name:string
+
+npx sequelize db:migrate
+
+npx sequelize seed:generate --name task
+
+npx sequelize db:seed:all
 
 
 .env

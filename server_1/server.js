@@ -25,21 +25,8 @@ app.listen(PORT, () => {
   console.log(`Express app running on port: ${PORT}`);
 });
 
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: "Library API",
-      version: '1.0.0',
-    },
-  },
-  apis: ["app.js"],
-};
-
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
-/* 
 const swaggerDefinition = {
   info: {
     title: 'psql Registration Swagger API',
@@ -63,9 +50,9 @@ const options = {
   apis: ['./routes/*.js'],
 };
 
-const swaggerSpec = swaggerJSDoc(options);app.get('/swagger.json', function(req, res) {
+const swaggerSpec = swaggerJSDoc(options); app.get('/swagger.json', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); */
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); 

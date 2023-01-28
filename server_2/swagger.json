@@ -1,0 +1,1499 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "E-commerce Api",
+        "version": "1.0.0",
+        "description": "E-commerce REST API with Node.js/Express.js, PostgreSQL and Sequelize.js"
+    },
+    "servers": [
+        {
+        "url": "http://localhost:5000",
+        "description": "Localhost server is for development purposes only"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "components": {
+        "securitySchemes": {
+            "cookieAuth": {
+                "type": "http",
+                "schema": "cookie"
+            }
+        }
+    },
+    "security": [
+        {
+            "cookie": "[]"
+        }
+    ],
+    "paths": {
+        "/user/register": {
+            "post": {
+             "tags": ["User"],
+             "summary": "Register user",
+             "parameters": [
+                {
+                    "name": "Model",
+                    "description": "User's details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "email",
+                            "password"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You registered successfully",
+                    "headers": {
+                        "Set-Cookie": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                 },
+                 "400": {
+                    "description": "Bad request"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+        "/user/login": {
+            "post": {
+             "tags": ["User"],
+             "summary": "Login user",
+             "parameters": [
+                {
+                    "name": "Model",
+                    "description": "User's details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "email",
+                            "password"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You logged in",
+                    "headers": {
+                        "Set-Cookie": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                 },
+                 "400": {
+                    "description": "Bad request"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+        "/user/all": {
+           "get": {
+            "tags": ["User"],
+            "summary": "List of all users",
+            "responses": {
+                "200": {
+                    "description": "Success. You get list of users"
+                },
+                "401": {
+                    "description": "No token, auth denied"
+                },
+                "403": {
+                    "description": "This page only accessible for admin"
+                },
+                "500": {
+                    "description": "Server error"
+                }
+            }
+           }
+        },
+        "/user/logout": {
+            "get": {
+             "tags": ["User"],
+             "summary": "Logout user",
+             "responses": {
+                 "200": {
+                     "description": "Success. You logout"
+                 }
+             }
+            }
+        },
+        "/category": {
+            "post": {
+             "tags": ["Category"],
+             "summary": "Add a new category",
+             "parameters": [
+                {
+                    "name": "Model",
+                    "description": "Details of category",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "name"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You created a new category"
+                 },
+                 "400": {
+                    "description": "Name is required"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/category/all": {
+            "get": {
+             "tags": ["Category"],
+             "summary": "List of all categories",
+             "responses": {
+                 "200": {
+                    "description": "Success. You get list of categories"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "500": {
+                    "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/category/{id}": {
+            "get": {
+             "tags": ["Category"],
+             "summary": "Get category according to categoryId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Category id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You get category"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Category not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/category/update/{id}": {
+            "put": {
+             "tags": ["Category"],
+             "summary": "Update category according to categoryId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Category id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "description": "Category name",
+                    "in": "body",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "name"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You updated category"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                },
+                 "404": {
+                    "description": "Category not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/category/delete/{id}": {
+            "delete": {
+             "tags": ["Category"],
+             "summary": "Delete category according to categoryId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Category id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You deleted category"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                },
+                 "404": {
+                    "description": "Category not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/product": {
+            "post": {
+             "tags": ["Product"],
+             "summary": "Add a new product",
+             "consumes": ["multipart/form-data"],
+             "produces": ["application/json"],
+             "parameters": [
+                {
+                    "name": "name",
+                    "description": "Product name",
+                    "in": "formData",
+                    "type": "string",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": "Product description",
+                    "in": "formData",
+                    "type": "string",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "description"
+                                ],
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "categoryId",
+                    "description": "Product categoryId",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "categoryId"
+                                ],
+                                "properties": {
+                                    "categoryId": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "price",
+                    "description": "Product price",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "price"
+                                ],
+                                "properties": {
+                                    "price": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "quantity",
+                    "description": "Product quantity",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "sold",
+                    "description": "Product sold",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "sold"
+                                ],
+                                "properties": {
+                                    "sold": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "photo",
+                    "description": "Product image",
+                    "in": "formData",
+                    "type": "file",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "photo"
+                                ],
+                                "properties": {
+                                    "photo": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "shipping",
+                    "description": "Product shipping",
+                    "in": "formData",
+                    "type": "boolean",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "shipping"
+                                ],
+                                "properties": {
+                                    "shipping": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              ],
+                "responses": {
+                 "201": {
+                    "description": "Success. You created a new product"
+                 },
+                 "400": {
+                    "description": "Bad request"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+        },
+        "/product/all/search": {
+            "get": {
+             "tags": ["Product"],
+             "summary": "List of products according to sortby, order, offset, limit queries",
+             "parameters": [
+                {
+                    "name": "sortby",
+                    "in": "query",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "in": "query",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                }
+             ],
+             "responses": {
+                 "200": {
+                     "description": "Success. You get list of products"
+                 },
+                 "401": {
+                     "description": "No token, auth denied"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/product/{id}": {
+            "get": {
+             "tags": ["Product"],
+             "summary": "Get product according to productId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Product id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You get product"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Product not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/product/photo/{id}": {
+            "get": {
+             "tags": ["Product"],
+             "summary": "Get photo of product according to productId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Product id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You get photo of product",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "photo"
+                        ],
+                        "properties": {
+                            "photo": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Product not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/product/update/{id}": {
+            "put": {
+             "tags": ["Product"],
+             "summary": "Update the exist product according to productId",
+             "consumes": ["multipart/form-data"],
+             "produces": ["application/json"],
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Product id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "description": "Product name",
+                    "in": "formData",
+                    "type": "string",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": "Product description",
+                    "in": "formData",
+                    "type": "string",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "description"
+                                ],
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "categoryId",
+                    "description": "Product categoryId",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "categoryId"
+                                ],
+                                "properties": {
+                                    "categoryId": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "price",
+                    "description": "Product price",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "price"
+                                ],
+                                "properties": {
+                                    "price": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "quantity",
+                    "description": "Product quantity",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "sold",
+                    "description": "Product sold",
+                    "in": "formData",
+                    "type": "integer",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "sold"
+                                ],
+                                "properties": {
+                                    "sold": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "photo",
+                    "description": "Product image",
+                    "in": "formData",
+                    "type": "file",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "photo"
+                                ],
+                                "properties": {
+                                    "photo": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "shipping",
+                    "description": "Product shipping",
+                    "in": "formData",
+                    "type": "boolean",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "shipping"
+                                ],
+                                "properties": {
+                                    "shipping": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              ],
+                "responses": {
+                 "201": {
+                    "description": "Success. You created a new product"
+                 },
+                 "400": {
+                    "description": "Bad request"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+        },
+        "/product/delete/{id}": {
+            "delete": {
+             "tags": ["Product"],
+             "summary": "Delete product according to productId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Product id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You deleted product"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                },
+                 "404": {
+                    "description": "Product not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/cart": {
+            "post": {
+             "tags": ["Cart"],
+             "summary": "Add a cart",
+             "parameters": [
+                {
+                    "name": "Model",
+                    "description": "Cart details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "userId",
+                            "productId",
+                            "quantity"
+                        ],
+                        "properties": {
+                            "userId": {
+                                "type": "integer"
+                            },
+                            "productId": {
+                                "type": "integer"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                   "description": "Success. You created a cart"
+                },
+                "400": {
+                    "description": "Bad request"
+                 },
+                "401": {
+                   "description": "No token, auth denied"
+                },
+                "500": {
+                    "description": "Server error"
+                }
+            }
+           }
+        },
+        "/cart/all": {
+            "get": {
+             "tags": ["Cart"],
+             "summary": "List of carts",
+             "responses": {
+                 "200": {
+                     "description": "Success. You get list of carts",
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "$ref": "#/definitions/Cart"
+                             }
+                         }
+                     }
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                    "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/cart/{id}": {
+            "get": {
+             "tags": ["Cart"],
+             "summary": "Get cart according to userId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "User id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You get cart"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Cart not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/cart/update/{id}": {
+            "put": {
+             "tags": ["Cart"],
+             "summary": "Update the exist cart according to cartId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Cart id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "Model",
+                    "description": "Cart details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "productId",
+                            "quantity"
+                        ],
+                        "properties": {
+                            "productId": {
+                                "type": "integer"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You updated cart"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Cart not founded"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/cart/delete/{id}": {
+            "delete": {
+             "tags": ["Cart"],
+             "summary": "Delete cart according to cartId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Cart id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You deleted cart"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Cart not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/order": {
+            "post": {
+             "tags": ["Order"],
+             "summary": "Add order",
+             "parameters": [
+                {
+                    "name": "Model",
+                    "description": "Order details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "userId",
+                            "productId",
+                            "quantity",
+                            "amount",
+                            "address",
+                            "status"
+                        ],
+                        "properties": {
+                            "userId": {
+                                "type": "integer"
+                            },
+                            "productId": {
+                                "type": "integer"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            },
+                            "amount": {
+                                "type": "integer"
+                            },
+                            "address": {
+                                "type": "object"
+                            },
+                            "status": {
+                                "type": "string",
+                                "default": "pending"
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                   "description": "Success. You created order"
+                },
+                "400": {
+                    "description": "Bad request"
+                 },
+                "401": {
+                   "description": "No token, auth denied"
+                },
+                "500": {
+                    "description": "Server error"
+                }
+            }
+           }
+        },
+        "/order/all": {
+            "get": {
+             "tags": ["Order"],
+             "summary": "List of orders",
+             "responses": {
+                 "200": {
+                     "description": "Success. You get list of orders"
+                 },
+                 "401": {
+                     "description": "No token, auth denied"
+                 },
+                 "403": {
+                     "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/order/{id}": {
+            "get": {
+             "tags": ["Order"],
+             "summary": "Get order according to userId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "User id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You get order"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Order not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/order/update/{id}": {
+            "put": {
+             "tags": ["Order"],
+             "summary": "Update the exist order according to orderId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Order id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "Model",
+                    "description": "Order details",
+                    "in": "body",
+                    "type": "string",
+                    "schema": {
+                        "type": "object",
+                        "required": [
+                            "productId",
+                            "quantity",
+                            "amount",
+                            "address",
+                            "status"
+                        ],
+                        "properties": {
+                            "productId": {
+                                "type": "integer"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            },
+                            "amount": {
+                                "type": "integer"
+                            },
+                            "address": {
+                                "type": "object"
+                            },
+                            "status": {
+                                "type": "string",
+                                "default": "pending"
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                   "description": "Success. You created order"
+                },
+                "400": {
+                    "description": "Bad request"
+                 },
+                "401": {
+                   "description": "No token, auth denied"
+                },
+                "403": {
+                    "description": "This page only accessible for admin"
+                },
+                "500": {
+                    "description": "Server error"
+                }
+            }
+           }
+        },
+        "/order/delete/{id}": {
+            "delete": {
+             "tags": ["Order"],
+             "summary": "Delete order according to orderId",
+             "parameters": [
+                {
+                    "name": "id",
+                    "description": "Order id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success. You deleted order"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "404": {
+                    "description": "Order not founded"
+                },
+                 "500": {
+                     "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/dashboard/income/daily/search": {
+            "get": {
+             "tags": ["Dashboard"],
+             "summary": "daily income according to year, month, day query",
+             "parameters": [
+                {
+                    "name": "year",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "name": "month",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "name": "day",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                    "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/dashboard/income/monthly/search": {
+            "get": {
+             "tags": ["Dashboard"],
+             "summary": "monthly income according to year, month query",
+             "parameters": [
+                {
+                    "name": "year",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "name": "month",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                    "description": "Server error"
+                 }
+             }
+            }
+         },
+         "/dashboard/income/annual/search": {
+            "get": {
+             "tags": ["Dashboard"],
+             "summary": "annual income according to year query",
+             "parameters": [
+                {
+                    "name": "year",
+                    "in": "query",
+                    "type": "integer",
+                    "required": false
+                }
+             ],
+             "responses": {
+                 "200": {
+                    "description": "Success"
+                 },
+                 "401": {
+                    "description": "No token, auth denied"
+                 },
+                 "403": {
+                    "description": "This page only accessible for admin"
+                 },
+                 "500": {
+                    "description": "Server error"
+                 }
+             }
+            }
+         }
+    },
+    "definitions": {
+        "User": {
+           "type": "object",
+           "properties": {
+               "id": {
+                   "type": "integer"
+               },
+               "name": {
+                    "type": "string"
+                },
+               "email": {
+                    "type": "string"
+                },
+               "password": {
+                    "type": "string"
+                },
+               "role": {
+                    "type": "integer"
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "updatedAt": {
+                    "type": "date"
+                }
+            }
+        },
+        "Category": {
+           "type": "object",
+           "properties": {
+               "id": {
+                   "type": "integer"
+                },
+               "name": {
+                   "type": "string"
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "updatedAt": {
+                    "type": "date"
+                }
+            }
+        },
+       "Product": {
+           "type": "object",
+           "properties": {
+               "id": {
+                   "type": "integer"
+                },
+                 "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "sold": {
+                    "type": "integer"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "shipping": {
+                    "type": "boolean"
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "updatedAt": {
+                    "type": "date"
+                } 
+            }
+        },
+        "Cart": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "updatedAt": {
+                    "type": "date"
+                }
+            }
+        },
+        "Order": {
+            "type": "object",
+            "properties": {
+                "id": {
+                "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "address": {
+                    "type": "object"
+                },
+                 "status": {
+                    "type": "string"
+                },
+                 "createdAt": {
+                    "type": "date"
+                },
+                 "updatedAt": {
+                    "type": "date"
+                }
+            }
+        }
+    }
+}
