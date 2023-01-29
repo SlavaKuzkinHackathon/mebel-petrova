@@ -56,7 +56,18 @@ INSERT INTO Products VALUES (4, 'Galaxy S9', 'Samsung', 4, 63000)
 UPDATE users SET role=1 WHERE id=3;
 
 
+alter postgres with mebel_petrova with password 'slava'
+psql -c "alter postgres with mebel_petrova with password 'slava'"
+psql -c "alter user test_user1 with password '<указать_пароль>'"
 
+createdb mebel_petrova-O postgres
+psql -c "alter user test_user1 with password '<указать_пароль>'"
+psql -c "alter postgres mebel_petrova with password 'slava'"
+psql -c "alter mebel_petrova with password 'slava'"
+
+
+create table mebel_test ( id int,first_name text, last_name text );
+insert into mebel_test (id,first_name,last_name) values (2,'Иван','Иванов'); 
 
 
 

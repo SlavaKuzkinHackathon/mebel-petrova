@@ -1,8 +1,10 @@
 createuser postgres
 
+createdb mebel_petrova -0 postgres
 createdb mebel_petrova -O postgres
 
 psql -c "alter user postgres with password 'slava'"
+psql -c "alter user test_user1 with password '<указать_пароль>'"
 
 sudo su - postgres
 
