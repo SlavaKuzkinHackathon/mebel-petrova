@@ -1,0 +1,66 @@
+createuser postgres
+
+createdb mebel_petrova -O postgres
+
+psql -c "alter user postgres with password 'slava'"
+
+sudo su - postgres
+
+
+psql mebel_petrova
+
+\dt - таблицы в базе данных
+
+select * from products;
+
+dropdb test_db
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
+
+npx sequelize model:generate --name Task --attributes taskName:string
+
+npx sequelize model:generate --name User --attributes name:string
+
+npx sequelize db:migrate
+
+npx sequelize seed:generate --name task
+
+npx sequelize db:seed:all
+
+
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+.env
+
+PORT=5050
+
+DB=mebel_petrova
+DB_USER=postgres
+DB_PASSWORD=slava
+DB_HOST=localhost
+DB_PORT=5432
+SECRET_KEY=random_secret_key1998
+
+
+
+https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4
+
+
+https://wiki.astralinux.ru/pages/viewpage.action?pageId=147162402&ysclid=ld761tizrc212993960
+
+INSERT INTO Products VALUES (4, 'Galaxy S9', 'Samsung', 4, 63000)
+UPDATE users SET role=1 WHERE id=3;
+
+
+
+
+
+
+
+
+
+

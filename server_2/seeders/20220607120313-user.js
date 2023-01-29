@@ -18,8 +18,8 @@ module.exports = {
        password: '$2b$10$fmzVVk6J32SpAYNjTq8S3e635TPcrxlG8zi56w07jKOa7s6XLgFme',
        role: 1,
        createdAt: '2022-06-27T15:57:43.794Z',
-       updatedAt: '2022-06-27T15:57:44.017Z'  
-     }, { 
+       updatedAt: '2022-06-27T15:57:44.017Z'
+     }, {
       id: 2,
       name: 'tom',
       email: 'tom@gmail.com',

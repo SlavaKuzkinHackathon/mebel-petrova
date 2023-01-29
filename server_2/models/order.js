@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     quantity: {
       type: DataTypes.INTEGER,
-      defaultValue: 1
+      defaultValue: 1 
     },
     amount: {
       type: DataTypes.INTEGER,
