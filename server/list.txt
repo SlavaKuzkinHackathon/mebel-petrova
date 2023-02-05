@@ -70,8 +70,15 @@ create table mebel_test ( id int,first_name text, last_name text );
 insert into mebel_test (id,first_name,last_name) values (2,'Иван','Иванов'); 
 
 
+{
+  "email": "1977@mail.ru",
+  "password": "slava1977"
+}
 
 
 
+
+file:///home/vyacheslav/Desktop/mebel-petrova/server/images/1656430189954.samsung%20s22.jpg
+/home/vyacheslav/Desktops/mebel-petrova/server/images\1656430762170.samsung s22.jpg/
 
 
