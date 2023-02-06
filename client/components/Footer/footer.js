@@ -1,7 +1,7 @@
 
 
 
-const Footer = () => {
+const footer = () => {
     return(
         <div>
             Copyright 2023
@@ -9,4 +9,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default footer
