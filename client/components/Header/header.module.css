@@ -1,0 +1,123 @@
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgb(255, 248, 182);
+    background: radial-gradient(circle, rgba(255, 248, 182, 1) 9%, rgba(255, 255, 102, 1) 79%, rgba(255, 248, 182, 1) 90%);
+}
+
+.header__content {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-top: 30px;
+    margin-right: 30px;
+}
+
+.active {
+    color: var(--color-link-active);
+    opacity: 0.5;
+}
+
+.logo__img {
+    width: auto;
+    height: 80px;
+    margin-top: 12px;
+    margin-block-end: 12px;
+}
+
+.link {
+    color: var(--color-main);
+    font-size: var(--font-size-medium);
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.phone {
+    color: var(--color-main);
+
+    margin-right: 30px;
+}
+
+.logo__inst {
+    width: 20px;
+    height: 20px;
+    object-fit: 100%;
+    object-position: center center;
+    background-color: rgb(111, 135, 117);
+    border-radius: 50%;
+
+    transform: scale(2.0);
+    margin-left: 30px;
+}
+
+.callback {
+    margin-left: 40px;
+    padding: 10px 30px 10px 30px;
+    font-weight: 700;
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-small);
+    color: var(--color-main);
+    background-color: white;
+    border: 2px solid var(--color-main);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+.callback:hover {
+    background-color: var(--color-main);
+    color: white;
+
+
+}
+
+@media screen and (max-width: 825px) {
+    .nav {
+        display: block;
+        text-align: center;
+    }
+
+    .header__content {
+        margin-top: 70px;
+        text-align: center;
+        display: block;
+        margin-right: 0;
+
+    }
+
+    .links__social {
+        text-align: center;
+        display: block;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .link {
+
+        display: block;
+        margin: 0;
+        margin-bottom: 20px;
+
+    }
+
+    .phone {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .logo__inst {
+        margin-left: 0;
+    }
+
+    .callback {
+
+
+
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+}
