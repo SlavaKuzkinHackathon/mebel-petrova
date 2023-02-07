@@ -8,9 +8,9 @@ const categoryById = require('../middleware/categoryById')
 
 router.post('/', auth, adminAuth, categoryValidate, addCategory)
 
-router.get('/all', auth, getAllCategories)
+router.get('/all', getAllCategories)
 
-router.get('/:categoryId', auth, categoryById, getCategory)
+router.get('/:categoryId', categoryById, getCategory)
 
 router.put('/update/:categoryId', auth, adminAuth, categoryById, changeCategory)
 

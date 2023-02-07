@@ -210,9 +210,6 @@
                  "200": {
                     "description": "Success. You get list of categories"
                  },
-                 "401": {
-                    "description": "No token, auth denied"
-                 },
                  "500": {
                     "description": "Server error"
                  }
@@ -235,9 +232,6 @@
              "responses": {
                  "200": {
                     "description": "Success. You get category"
-                 },
-                 "401": {
-                    "description": "No token, auth denied"
                  },
                  "404": {
                     "description": "Category not founded"
@@ -418,7 +412,7 @@
                             }
                         }
                     }
-                },
+                }, 
                 {
                     "name": "quantity",
                     "description": "Product quantity",
@@ -557,9 +551,6 @@
                  "200": {
                      "description": "Success. You get list of products"
                  },
-                 "401": {
-                     "description": "No token, auth denied"
-                 },
                  "500": {
                      "description": "Server error"
                  }
@@ -582,9 +573,6 @@
              "responses": {
                  "200": {
                     "description": "Success. You get product"
-                 },
-                 "401": {
-                    "description": "No token, auth denied"
                  },
                  "404": {
                     "description": "Product not founded"
@@ -622,9 +610,6 @@
                             }
                         }
                     }
-                 },
-                 "401": {
-                    "description": "No token, auth denied"
                  },
                  "404": {
                     "description": "Product not founded"

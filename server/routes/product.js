@@ -8,11 +8,11 @@ const productById = require('../middleware/productById')
 
 router.post('/', auth, adminAuth, upload, addProduct)
 
-router.get('/all/search', auth, getProductList)
+router.get('/all/search', getProductList)
 
-router.get('/:productId', auth, productById, getProduct)
+router.get('/:productId', productById, getProduct)
 
-router.get('/photo/:productId/', auth, productById, getProductPhoto)
+router.get('/photo/:productId/', productById, getProductPhoto)
 
 router.put('/update/:productId', auth, adminAuth, productById, upload, changeProduct)
 
