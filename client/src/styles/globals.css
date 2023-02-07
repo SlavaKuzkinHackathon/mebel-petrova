@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
 
+.content {
+  min-height: 100vh;
+  flex-grow: 1;
+}    
+
 :root{
   /* container */
   --container-medium: 1160px;
@@ -14,7 +19,6 @@
   
   /* colors */
   --color-main: rgb(23, 24, 23);
-  
   --color-opasity-main: rgb(111, 135, 117,.8);
   --color-well-opasity-main: rgba(111, 135, 117, 0.22);
   --color-yarche-main: rgb(148, 181, 156);

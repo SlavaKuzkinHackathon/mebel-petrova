@@ -1,0 +1,35 @@
+.footer {
+    background: rgb(170, 201, 58);
+    background: linear-gradient(90deg, rgba(170, 201, 58, 1) 21%, rgba(97, 163, 117, 1) 98%);
+    margin-top: 250px;
+}
+
+.copyright{
+    color:white;
+    font-size: 21;
+}
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 40px;
+    color: white;
+    font-weight: 399;
+    align-items: center;
+}
+
+.links a:not(:last-child) {
+    margin-right: 20px;
+}
+
+.img {
+    margin-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.logo__img {
+    width: auto;
+    height: 80px;
+
+}
