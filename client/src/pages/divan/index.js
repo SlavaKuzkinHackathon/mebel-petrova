@@ -22,13 +22,20 @@ const Divan = ({divan}) => {
           <div className={styles.divanCard}>
             <div className={styles.imageContainer}>
               <Image 
-                /* src={`${divans.photo}`} */ 
+              src={`/${divans.photo}`}
+              layout="fill"
+               className={styles.image}
+               alt={`${divans.name}`}
+              /> 
+
+             {/*  <Image 
+                src={`/${divans.photo}`} 
                 alt={`${divans.name}`} 
-                width="100%" 
-                height="100%" 
-                layout="responsive" 
-                objectFit="cover"
-              />
+                width='100%'
+                height='100%'
+                layout="responsive"
+                objectFit="contain"
+              /> */} 
             </div>
             <div>
               <h3>{ divans.name }</h3>

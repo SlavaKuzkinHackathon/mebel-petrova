@@ -11,9 +11,15 @@ psql mebel_petrova
 
 \dt - таблицы в базе данных
 
-select * from products;
+
 
 dropdb test_db
+
+select * from products;
+select * from categoties;
+
+DELETE FROM Products;
+DELETE FROM categoties;
 
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
