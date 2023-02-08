@@ -8,34 +8,29 @@ export const getStaticProps = async ()  => {
 
     return{
         props: { divan: data }
+
     } 
 }
 
   
 const Divan = ({divan}) => {
+  
 
     return (
         <div>
             <h1>Наши Диваны</h1>
             {divan.map(divans => (
         <Link href={`/divan/${divans.id}`} key={divans.id}>
+          
           <div className={styles.divanCard}>
             <div className={styles.imageContainer}>
-              <Image 
-              src={`/${divans.photo}`}
-              layout="fill"
-               className={styles.image}
-               alt={`${divans.name}`}
-              /> 
 
-             {/*  <Image 
+            <Image 
                 src={`/${divans.photo}`} 
                 alt={`${divans.name}`} 
-                width='100%'
-                height='100%'
-                layout="responsive"
-                objectFit="contain"
-              /> */} 
+                width={100}
+                height={100}
+              /> 
             </div>
             <div>
               <h3>{ divans.name }</h3>

@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 1000000 },
+    limits: { fileSize: 1000000 }, 
     fileFilter: (req, file, cb) => {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
             cb(null, true)
@@ -23,6 +23,7 @@ const upload = multer({
     }
 }
 }).single('photo')
+
 
 
 const addProduct = async  (req, res) => {
@@ -76,7 +77,7 @@ const getProductPhoto = async  (req, res) => {
         const image = path.join(__dirname, '/../' + `/${product.photo.toString()}/`)
         res.sendFile(image)
     } catch (err) {
-        if (err) console.log(err)
+        if (err) console.log(err) 
         res.status(500).json({ error: 'Server error' })
     }
 }
