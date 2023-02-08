@@ -1,19 +1,22 @@
-/** @type {import('next').NextConfig} */
-/* const nextConfig = {
+
+const nextConfig  = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig */
-
-module.exports = {
   env: {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL,
     
   },
   images: {
-    domains: [
-      'localhost:5000'
-    ],
-  }
+      domains: [
+          "localhost",
+          "2.gravatar.com",
+          "0.gravatar.com",
+          "secure.gravatar.com",
+      ],
+  },
 };
+
+
+
+
+module.exports = nextConfig

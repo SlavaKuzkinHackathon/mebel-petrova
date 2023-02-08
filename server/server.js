@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const swaggerUi = require('swagger-ui-express')
 const swaggerDoc = require('./swagger.json')
 
-
+const path = require('path')
 
 
 
@@ -23,7 +23,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 
 
-
+app.use(express.static(path.resolve(__dirname, 'images')))
 
 
 const swaggerOptions  = {

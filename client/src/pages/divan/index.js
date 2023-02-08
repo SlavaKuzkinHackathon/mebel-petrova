@@ -26,10 +26,10 @@ const Divan = ({divan}) => {
             <div className={styles.imageContainer}>
 
             <Image 
-                src={`/${divans.photo}`} 
+                src={`${'http://localhost:5000'}/${divans.photo}`} 
                 alt={`${divans.name}`} 
                 width={100}
-                height={100}
+                height={70}
               /> 
             </div>
             <div>
