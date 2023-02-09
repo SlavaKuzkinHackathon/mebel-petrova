@@ -26,7 +26,7 @@ const Divan = ({divan}) => {
             <div className={styles.imageContainer}>
 
             <Image 
-                src={`${'http://localhost:5000'}/${divans.photo}`} 
+                src={`${'http://localhost:5000'}/${divans.photo.substr(7)}`} 
                 alt={`${divans.name}`} 
                 width={100}
                 height={70}
@@ -34,8 +34,7 @@ const Divan = ({divan}) => {
             </div>
             <div>
               <h3>{ divans.name }</h3>
-              <p>{ divans.descrption }</p>
-              <p>{ divans.price}</p>
+              <p>{ divans.price} ₽</p>
             </div>
           </div>
         </Link>

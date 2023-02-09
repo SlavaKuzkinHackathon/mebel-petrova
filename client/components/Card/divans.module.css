@@ -1,7 +1,8 @@
 
 .imageContainer {
-    max-width: 250px;
+    max-width: 350px;
     position: relative;
+    
 } 
 
 .divanCard {
@@ -22,3 +23,8 @@
 .divanCard h3 {
     margin-top: 0;
 }
+
+.singleDivan {
+    max-width: 600px;
+    margin-left: 50px;
+  }

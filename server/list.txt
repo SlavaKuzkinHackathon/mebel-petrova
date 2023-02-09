@@ -15,7 +15,7 @@ psql mebel_petrova
 
 dropdb test_db
 
-UPDATE Products SET id = 2, photo = '1675833841781.g-2250x1050-div.jpg' WHERE photo = 'images/1675833841781.g-2250x1050-div.jpg';
+UPDATE Products SET id = 3, photo = '1675915542105.q-div.jpg' WHERE photo = 'images/1675915542105.q-div.jpg';
 
 select * from products;
 select * from categoties;

@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
         cb(null, 'images')
     },
     filename: (req, file, cb) => {
-        cb(null,  `${Date.now()}.${file.originalname}`)
+        cb(null, `${Date.now()}.${file.originalname}`)
     }
 })
 
@@ -62,7 +62,7 @@ const addProduct = async  (req, res) => {
 }
 
 const getProduct = (req, res) => {
-    req.product.photo = undefined
+    //req.product.photo = undefined
     res.status(200).json(req.product)
 }
 
